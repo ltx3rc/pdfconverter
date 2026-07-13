@@ -1,163 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prince PDF Tools</title>
 
-<title>Prince PDF Tools</title>
+    <link rel="stylesheet" href="style.css">
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:#0f172a;
-color:#fff;
-overflow:hidden;
-}
-
-/* Loading Screen */
-
-#loading{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#0f172a;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-z-index:999;
-}
-
-.loader{
-width:70px;
-height:70px;
-border:6px solid rgba(255,255,255,.2);
-border-top:6px solid #3b82f6;
-border-radius:50%;
-animation:spin 1s linear infinite;
-margin-bottom:20px;
-}
-
-@keyframes spin{
-100%{
-transform:rotate(360deg);
-}
-}
-
-#loading h1{
-font-size:32px;
-}
-
-#loading p{
-margin-top:10px;
-color:#94a3b8;
-}
-
-/* Main */
-
-#main{
-display:none;
-height:100vh;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-padding:20px;
-text-align:center;
-}
-
-h2{
-font-size:40px;
-margin-bottom:40px;
-}
-
-.buttons{
-display:flex;
-gap:20px;
-flex-wrap:wrap;
-justify-content:center;
-}
-
-button{
-padding:18px 45px;
-font-size:20px;
-border:none;
-border-radius:15px;
-cursor:pointer;
-background:#2563eb;
-color:#fff;
-transition:.3s;
-}
-
-button:hover{
-background:#1d4ed8;
-transform:scale(1.05);
-}
-
-footer{
-position:absolute;
-bottom:20px;
-color:#94a3b8;
-}
-</style>
-
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+
 <body>
 
-<!-- Loading -->
+<!-- Loading Screen -->
 
 <div id="loading">
 
-<div class="loader"></div>
+    <div class="loader"></div>
 
-<h1>Website Made By Prince</h1>
+    <h1>Website Made By Prince</h1>
 
-<p>Loading...</p>
+    <p>Loading...</p>
 
 </div>
 
-<!-- Main -->
+<!-- Main Website -->
 
 <div id="main">
 
-<h2>📄 Prince PDF Tools</h2>
+    <div class="card">
 
-<div class="buttons">
+        <h1>📄 Prince PDF Tools</h1>
 
-<button onclick="alert('Create PDF Page Coming Soon')">
-Create a PDF
-</button>
+        <p class="subtitle">
+            Create, Edit and Manage your PDF files in seconds.
+        </p>
 
-<button onclick="alert('Edit PDF Page Coming Soon')">
-Edit a PDF
-</button>
+        <div class="buttons">
 
-</div>
+            <button class="btn create"
+                onclick="window.location.href='create.html'">
 
-<footer>
-Made with ❤️ by Prince
-</footer>
+                <i class="fa-solid fa-file-circle-plus"></i>
+
+                Create a PDF
+
+            </button>
+
+            <button class="btn edit"
+                onclick="window.location.href='edit.html'">
+
+                <i class="fa-solid fa-pen-to-square"></i>
+
+                Edit a PDF
+
+            </button>
+
+        </div>
+
+        <footer>
+
+            Made with ❤️ by Prince
+
+        </footer>
+
+    </div>
 
 </div>
 
 <script>
 
-setTimeout(function(){
+window.onload = function(){
 
-document.getElementById("loading").style.display="none";
+    setTimeout(function(){
 
-document.getElementById("main").style.display="flex";
+        document.getElementById("loading").style.display="none";
 
-document.body.style.overflow="auto";
+        document.getElementById("main").style.display="flex";
 
-},3000);
+        document.body.style.overflow="auto";
+
+    },3000);
+
+};
 
 </script>
 
