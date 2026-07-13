@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Edit PDF | Prince PDF Tools</title>
+
+<link rel="stylesheet" href="edit.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+<a href="index.html" class="back-btn">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+Back
+
+</a>
+
+<h1>Edit PDF</h1>
+
+<p>Edit your PDF quickly and easily</p>
+
+</header>
+
+<section class="upload-section">
+
+<div class="upload-box" id="dropArea">
+
+<i class="fa-solid fa-file-pdf upload-icon"></i>
+
+<h2>Upload Your PDF</h2>
+
+<p>Drag & Drop your PDF here</p>
+
+<p>OR</p>
+
+<input
+type="file"
+id="pdfInput"
+accept=".pdf,application/pdf"
+hidden>
+
+<button id="chooseBtn">
+
+<i class="fa-solid fa-upload"></i>
+
+Choose PDF
+
+</button>
+
+</div>
+
+</section>
+
+<section class="tools-section">
+
+<h2>
+
+<i class="fa-solid fa-toolbox"></i>
+
+PDF Tools
+
+</h2>
+
+<div class="tools-grid">
+
+<div class="tool-card" id="mergeTool">
+
+<i class="fa-solid fa-object-group"></i>
+
+<h3>Merge PDF</h3>
+
+<p>Combine multiple PDF files into one.</p>
+
+</div>
+
+<div class="tool-card" id="splitTool">
+
+<i class="fa-solid fa-scissors"></i>
+
+<h3>Split PDF</h3>
+
+<p>Split PDF into separate pages.</p>
+
+</div>
+
+<div class="tool-card" id="rotateTool">
+
+<i class="fa-solid fa-rotate-right"></i>
+
+<h3>Rotate PDF</h3>
+
+<p>Rotate PDF pages easily.</p>
+
+</div>
+
+<div class="tool-card" id="compressTool">
+
+<i class="fa-solid fa-file-zipper"></i>
+
+<h3>Compress PDF</h3>
+
+<p>Reduce PDF file size.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PART 2 CONTINUES FROM HERE -->
+  <section class="preview-section">
+
+    <div class="section-title">
+
+        <h2>
+
+            <i class="fa-solid fa-eye"></i>
+
+            PDF Preview
+
+        </h2>
+
+        <span id="pdfName">
+
+            No PDF Selected
+
+        </span>
+
+    </div>
+
+    <div class="preview-box" id="previewBox">
+
+        <i class="fa-solid fa-file-pdf preview-icon"></i>
+
+        <h3>Your PDF Preview</h3>
+
+        <p>
+            Upload a PDF to see its details here.
+        </p>
+
+    </div>
+
+</section>
+
+<section class="action-section">
+
+    <div class="action-buttons">
+
+        <button class="danger-btn" id="removeBtn">
+
+            <i class="fa-solid fa-trash"></i>
+
+            Remove PDF
+
+        </button>
+
+        <button class="primary-btn" id="downloadBtn">
+
+            <i class="fa-solid fa-download"></i>
+
+            Download Edited PDF
+
+        </button>
+
+    </div>
+
+</section>
+
+<div id="loadingModal">
+
+    <div class="loading-box">
+
+        <div class="spinner"></div>
+
+        <h3>Processing PDF...</h3>
+
+        <p>Please wait while your PDF is being processed.</p>
+
+    </div>
+
+</div>
+
+<!-- PART 3 STARTS FROM HERE -->
+  <footer class="footer">
+
+    <div class="footer-content">
+
+        <h3>Prince PDF Tools</h3>
+
+        <p>Edit • Merge • Split • Compress PDF</p>
+
+        <div class="footer-icons">
+
+            <i class="fa-solid fa-file-pdf"></i>
+            <i class="fa-solid fa-pen"></i>
+            <i class="fa-solid fa-download"></i>
+
+        </div>
+
+        <p class="copyright">
+
+            © 2026 Prince PDF Tools <br>
+            Website Made By Prince
+
+        </p>
+
+    </div>
+
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="edit.js"></script>
+
+</body>
+</html>
