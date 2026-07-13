@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Create PDF | Prince PDF Tools</title>
+
+<link rel="stylesheet" href="create.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+
+<body>
+
+<header class="header">
+
+<a href="index.html" class="back-btn">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+Back
+
+</a>
+
+<h1>Create PDF</h1>
+
+<p>Convert Images into High Quality PDF</p>
+
+</header>
+
+<section class="upload-section">
+
+<div class="upload-box" id="dropArea">
+
+<i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+
+<h2>Drag & Drop Images Here</h2>
+
+<p>OR</p>
+
+<input
+type="file"
+id="imageInput"
+accept="image/*"
+multiple
+hidden>
+
+<button id="chooseBtn">
+
+<i class="fa-solid fa-image"></i>
+
+Choose Images
+
+</button>
+
+</div>
+
+</section>
+
+<section class="settings">
+
+<h2>
+
+<i class="fa-solid fa-sliders"></i>
+
+PDF Settings
+
+</h2>
+
+<div class="setting-grid">
+
+<div class="setting-card">
+
+<label>Page Size</label>
+
+<select id="pageSize">
+
+<option value="a4">A4</option>
+
+<option value="letter">Letter</option>
+
+<option value="original">Original</option>
+
+</select>
+
+</div>
+
+<div class="setting-card">
+
+<label>Orientation</label>
+
+<select id="orientation">
+
+<option value="portrait">Portrait</option>
+
+<option value="landscape">Landscape</option>
+
+</select>
+
+</div>
+
+<div class="setting-card">
+
+<label>Image Quality</label>
+
+<select id="quality">
+
+<option value="1">High</option>
+
+<option value="0.8">Medium</option>
+
+<option value="0.6">Low</option>
+
+</select>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PART 2 CONTINUES FROM HERE -->
+  <section class="preview-section">
+
+    <div class="section-title">
+
+        <h2>
+            <i class="fa-solid fa-images"></i>
+            Selected Images
+        </h2>
+
+        <span id="imageCount">0 Images</span>
+
+    </div>
+
+    <div id="previewContainer" class="preview-grid">
+
+        <!-- Images Preview Here -->
+
+    </div>
+
+</section>
+
+<section class="action-section">
+
+    <div class="pdf-options">
+
+        <label>
+
+            <input type="checkbox" id="fitPage" checked>
+
+            Fit Image to Page
+
+        </label>
+
+        <label>
+
+            <input type="checkbox" id="margin">
+
+            Add Margin
+
+        </label>
+
+    </div>
+
+    <div class="action-buttons">
+
+        <button id="clearBtn" class="danger-btn">
+
+            <i class="fa-solid fa-trash"></i>
+
+            Clear All
+
+        </button>
+
+        <button id="convertBtn" class="primary-btn">
+
+            <i class="fa-solid fa-file-pdf"></i>
+
+            Convert to PDF
+
+        </button>
+
+    </div>
+
+</section>
+
+<div id="loadingModal">
+
+    <div class="loading-box">
+
+        <div class="spinner"></div>
+
+        <h3>Creating PDF...</h3>
+
+        <p>Please wait a moment.</p>
+
+    </div>
+
+</div>
+
+<!-- PART 3 STARTS FROM HERE -->
+  <footer class="footer">
+
+    <div class="footer-content">
+
+        <h3>Prince PDF Tools</h3>
+
+        <p>
+            Fast • Secure • Free PDF Converter
+        </p>
+
+        <div class="footer-icons">
+
+            <i class="fa-solid fa-file-pdf"></i>
+
+            <i class="fa-solid fa-image"></i>
+
+            <i class="fa-solid fa-download"></i>
+
+        </div>
+
+        <p class="copyright">
+
+            © 2026 Prince PDF Tools<br>
+            Website Made By Prince
+
+        </p>
+
+    </div>
+
+</footer>
+
+<script src="create.js"></script>
+
+</body>
+</html>
