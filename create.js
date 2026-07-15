@@ -1,269 +1,121 @@
 const imageInput = document.getElementById("imageInput");
-const chooseBtn = document.getElementById("chooseBtn");
 const previewContainer = document.getElementById("previewContainer");
-const imageCount = document.getElementById("imageCount");
-const clearBtn = document.getElementById("clearBtn");
-const convertBtn = document.getElementById("convertBtn");
+const createBtn = document.getElementById("createBtn");
 const loadingModal = document.getElementById("loadingModal");
-const dropArea = document.getElementById("dropArea");
+const loadingProgress = document.getElementById("loadingProgress");
 
-let images = [];
+let selectedImages = [];
 
-// Choose Images
-chooseBtn.addEventListener("click", () => {
-    imageInput.click();
-});
+imageInput.addEventListener("change", function () {
 
-// Image Selection
-imageInput.addEventListener("change", (e) => {
-
-    const files = [...e.target.files];
-
-    files.forEach(file => {
-
-        if(file.type.startsWith("image/")){
-            images.push(file);
-        }
-
-    });
-
-    showImages();
-
-});
-
-// Preview Images
-function showImages(){
+    selectedImages = [...this.files];
 
     previewContainer.innerHTML = "";
 
-    imageCount.innerText = images.length + " Images";
+    if(selectedImages.length === 0){
+        previewContainer.innerHTML =
+        "<p class='empty-text'>No images selected.</p>";
+        return;
+    }
 
-    images.forEach((file,index)=>{
+    selectedImages.forEach(file => {
 
         const reader = new FileReader();
 
         reader.onload = function(e){
 
-            const card = document.createElement("div");
-            card.className = "image-card";
+            const img = document.createElement("img");
 
-            card.innerHTML = `
-            <img src="${e.target.result}">
-            <div class="image-name">${file.name}</div>
+            img.src = e.target.result;
 
-            <button class="delete-btn"
-            onclick="deleteImage(${index})">
+            previewContainer.appendChild(img);
 
-            <i class="fa-solid fa-xmark"></i>
-
-            </button>
-            `;
-
-            previewContainer.appendChild(card);
-
-        };
+        }
 
         reader.readAsDataURL(file);
 
     });
 
-}
-// =========================
-// Delete Image
-// =========================
+});
+createBtn.addEventListener("click", async () => {
 
-function deleteImage(index){
+if(selectedImages.length===0){
 
-    images.splice(index,1);
+alert("Please select at least one image.");
 
-    showImages();
+return;
 
 }
 
-// =========================
-// Clear All Images
-// =========================
+loadingModal.style.display="flex";
 
-clearBtn.addEventListener("click",()=>{
+loadingProgress.style.width="0%";
 
-    if(images.length===0){
+const { jsPDF } = window.jspdf;
 
-        alert("No Images Selected");
+const pdf = new jsPDF();
 
-        return;
+for(let i=0;i<selectedImages.length;i++){
 
-    }
+loadingProgress.style.width=
+((i+1)/selectedImages.length)*100+"%";
 
-    if(confirm("Remove all selected images?")){
+const file=selectedImages[i];
 
-        images=[];
+const imgData=await new Promise(resolve=>{
 
-        previewContainer.innerHTML="";
+const reader=new FileReader();
 
-        imageCount.innerText="0 Images";
+reader.onload=e=>resolve(e.target.result);
 
-        imageInput.value="";
-
-    }
+reader.readAsDataURL(file);
 
 });
 
-// =========================
-// Drag & Drop Upload
-// =========================
+if(i>0){
 
-["dragenter","dragover"].forEach(eventName=>{
-
-    dropArea.addEventListener(eventName,(e)=>{
-
-        e.preventDefault();
-
-        dropArea.style.borderColor="#22c55e";
-
-        dropArea.style.background="rgba(34,197,94,.10)";
-
-    });
-
-});
-
-["dragleave","drop"].forEach(eventName=>{
-
-    dropArea.addEventListener(eventName,(e)=>{
-
-        e.preventDefault();
-
-        dropArea.style.borderColor="#3b82f6";
-
-        dropArea.style.background="transparent";
-
-    });
-
-});
-
-dropArea.addEventListener("drop",(e)=>{
-
-    const files=[...e.dataTransfer.files];
-
-    files.forEach(file=>{
-
-        if(file.type.startsWith("image/")){
-
-            images.push(file);
-
-        }
-
-    });
-
-    showImages();
-
-});
-
-// =========================
-// Loading Functions
-// =========================
-
-function showLoading(){
-
-    loadingModal.style.display="flex";
+pdf.addPage();
 
 }
 
-function hideLoading(){
+const img=new Image();
 
-    loadingModal.style.display="none";
+await new Promise(resolve=>{
+
+img.onload=resolve;
+
+img.src=imgData;
+
+});
+
+const pageWidth=pdf.internal.pageSize.getWidth();
+
+const pageHeight=pdf.internal.pageSize.getHeight();
+
+pdf.addImage(
+
+img,
+
+"JPEG",
+
+0,
+
+0,
+
+pageWidth,
+
+pageHeight
+
+);
 
 }
-// =========================
-// Convert Images to PDF
-// =========================
 
-convertBtn.addEventListener("click", async () => {
+setTimeout(()=>{
 
-    if(images.length === 0){
-        alert("Please select at least one image.");
-        return;
-    }
+loadingModal.style.display="none";
 
-    showLoading();
+pdf.save("PDF-Tools.pdf");
 
-    try{
-
-        const { jsPDF } = window.jspdf;
-
-        const orientation =
-            document.getElementById("orientation").value === "landscape"
-            ? "l"
-            : "p";
-
-        const pageSize = document.getElementById("pageSize").value;
-        const quality = parseFloat(document.getElementById("quality").value);
-
-        const format = pageSize === "letter" ? "letter" : "a4";
-
-        const pdf = new jsPDF({
-            orientation: orientation,
-            unit: "mm",
-            format: format
-        });
-
-        for(let i = 0; i < images.length; i++){
-
-            const file = images[i];
-
-            const dataUrl = await new Promise((resolve)=>{
-                const reader = new FileReader();
-                reader.onload = e => resolve(e.target.result);
-                reader.readAsDataURL(file);
-            });
-
-            const img = new Image();
-
-            await new Promise((resolve)=>{
-                img.onload = resolve;
-                img.src = dataUrl;
-            });
-
-            const pageWidth = pdf.internal.pageSize.getWidth();
-            const pageHeight = pdf.internal.pageSize.getHeight();
-
-            const ratio = Math.min(
-                pageWidth / img.width,
-                pageHeight / img.height
-            );
-
-            const width = img.width * ratio;
-            const height = img.height * ratio;
-
-            const x = (pageWidth - width) / 2;
-            const y = (pageHeight - height) / 2;
-
-            if(i > 0){
-                pdf.addPage();
-            }
-
-            pdf.addImage(
-                dataUrl,
-                "JPEG",
-                x,
-                y,
-                width,
-                height,
-                "",
-                "FAST"
-            );
-        }
-
-        pdf.save("Prince-PDF.pdf");
-
-    }catch(error){
-
-        console.error(error);
-        alert("Failed to create PDF.");
-
-    }finally{
-
-        hideLoading();
-
-    }
+},500);
 
 });
