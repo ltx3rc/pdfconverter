@@ -81,3 +81,78 @@ createBtn.addEventListener("click", async()=>{
     const pdfHeight = pdf.internal.pageSize.getHeight();
 
     const imgQuality = parseFloat(quality.value);
+        for(let i=0;i<selectedImages.length;i++){
+
+        const file = selectedImages[i];
+
+        const dataURL = await new Promise(resolve=>{
+
+            const reader = new FileReader();
+
+            reader.onload = e=>resolve(e.target.result);
+
+            reader.readAsDataURL(file);
+
+        });
+
+        const img = new Image();
+
+        await new Promise(resolve=>{
+
+            img.onload = resolve;
+
+            img.src = dataURL;
+
+        });
+
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        ctx.drawImage(img,0,0);
+
+        const compressedImage = canvas.toDataURL(
+            "image/jpeg",
+            imgQuality
+        );
+
+        if(i>0){
+            pdf.addPage();
+        }
+
+        const ratio = Math.min(
+            pdfWidth / img.width,
+            pdfHeight / img.height
+        );
+
+        const w = img.width * ratio;
+        const h = img.height * ratio;
+
+        const x = (pdfWidth - w) / 2;
+        const y = (pdfHeight - h) / 2;
+
+        pdf.addImage(
+            compressedImage,
+            "JPEG",
+            x,
+            y,
+            w,
+            h
+        );
+
+        loadingProgress.style.width =
+            ((i + 1) / selectedImages.length) * 100 + "%";
+
+    }
+
+    setTimeout(()=>{
+
+        loadingModal.style.display="none";
+
+        pdf.save("PDF-Tools.pdf");
+
+    },400);
+
+});
