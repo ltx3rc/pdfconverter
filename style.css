@@ -1,124 +1,379 @@
+/* ===========================
+   PDF Tools - Style.css V2
+   Apple Glass UI
+=========================== */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    background:linear-gradient(135deg,#0f172a,#1e293b);
+
+    background:
+    radial-gradient(circle at top,#23262f 0%,#111216 45%,#09090b 100%);
+
     color:#fff;
-    overflow:hidden;
-}
 
-/* Loading Screen */
+    overflow-x:hidden;
 
-#loading{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:#0f172a;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    z-index:9999;
-}
-
-.loader{
-    width:80px;
-    height:80px;
-    border:6px solid rgba(255,255,255,.15);
-    border-top:6px solid #3b82f6;
-    border-radius:50%;
-    animation:spin 1s linear infinite;
-    margin-bottom:20px;
-}
-
-@keyframes spin{
-    100%{
-        transform:rotate(360deg);
-    }
-}
-
-#loading h1{
-    font-size:34px;
-    margin-bottom:8px;
-}
-
-#loading p{
-    color:#94a3b8;
-    font-size:18px;
-}
-
-/* Main Section */
-
-#main{
-    display:none;
     min-height:100vh;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    text-align:center;
-    padding:20px;
+
 }
 
-#main h2{
-    font-size:42px;
-    margin-bottom:40px;
+/* Scrollbar */
+
+::-webkit-scrollbar{
+    width:8px;
 }
 
-.buttons{
+::-webkit-scrollbar-thumb{
+
+    background:#3b3b3b;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#111;
+
+}
+
+/* =====================
+      Loader
+===================== */
+
+#loader{
+
+    position:fixed;
+
+    inset:0;
+
     display:flex;
-    flex-wrap:wrap;
+
     justify-content:center;
-    gap:25px;
+
+    align-items:center;
+
+    background:#09090b;
+
+    z-index:99999;
+
+    transition:.8s;
+
 }
 
-button{
-    width:230px;
-    padding:18px;
-    font-size:20px;
-    border:none;
-    border-radius:16px;
-    background:#2563eb;
-    color:#fff;
-    cursor:pointer;
-    transition:.3s;
-    box-shadow:0 10px 30px rgba(37,99,235,.35);
+.loader-card{
+
+    width:360px;
+
+    padding:35px;
+
+    border-radius:30px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(30px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+
+    0 0 40px rgba(0,0,0,.35);
+
 }
 
-button:hover{
-    background:#1d4ed8;
-    transform:translateY(-5px);
-    box-shadow:0 15px 35px rgba(37,99,235,.45);
+/* Logo */
+
+.loader-logo{
+
+    width:110px;
+
+    height:110px;
+
+    object-fit:contain;
+
+    margin-bottom:18px;
+
+    animation:floatLogo 2.5s infinite ease-in-out;
+
 }
 
-footer{
-    position:absolute;
-    bottom:20px;
-    color:#94a3b8;
-    font-size:15px;
+.main-logo{
+
+    width:120px;
+
+    margin-bottom:15px;
+
+    filter:drop-shadow(0 0 20px rgba(255,255,255,.20));
+
 }
 
-/* Mobile */
+/* Titles */
 
-@media(max-width:768px){
+.loader-card h1{
 
-#main h2{
-    font-size:30px;
+    font-size:34px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
 }
 
-button{
+#loadingText{
+
+    color:#cfcfcf;
+
+    margin-bottom:18px;
+
+}/* ===========================
+   Progress Bar
+=========================== */
+
+.progress{
+
     width:100%;
-    max-width:320px;
-    font-size:18px;
+    height:12px;
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+    margin:20px 0;
+
 }
 
-#loading h1{
-    font-size:28px;
+#progressBar{
+
+    width:0%;
+
+    height:100%;
+
+    border-radius:50px;
+
+    background:linear-gradient(90deg,#ff3b30,#ff6a00,#ffd60a);
+
+    transition:.25s;
+
 }
+
+.percent{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    margin-bottom:12px;
+
+}
+
+.status{
+
+    color:#d1d5db;
+
+    font-size:15px;
+
+}
+
+.loading-list{
+
+    margin-top:20px;
+
+    text-align:left;
+
+    color:#d1d5db;
+
+    line-height:32px;
+
+}
+
+.made-by{
+
+    margin-top:25px;
+
+    font-size:14px;
+
+    color:#9ca3af;
+
+}
+
+/* ===========================
+      Header
+=========================== */
+
+.top-header{
+
+    padding:45px 20px;
+
+    text-align:center;
+
+}
+
+.top-header h1{
+
+    font-size:42px;
+
+    font-weight:800;
+
+    margin-top:10px;
+
+}
+
+.top-header p{
+
+    color:#b8b8b8;
+
+    margin-top:10px;
+
+}
+
+/* ===========================
+      Main Area
+=========================== */
+
+.home{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:30px;
+
+}
+
+.glass-container{
+
+    background:rgba(255,255,255,.06);
+
+    backdrop-filter:blur(28px);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    border-radius:30px;
+
+    padding:40px;
+
+}
+
+.glass-container h2{
+
+    text-align:center;
+
+    font-size:34px;
+
+}
+
+.subtitle{
+
+    text-align:center;
+
+    color:#cfcfcf;
+
+    margin:12px 0 40px;
+
+}
+
+/* ===========================
+      Cards
+=========================== */
+
+.tool-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+}
+
+.tool-card{
+
+    text-decoration:none;
+
+    color:white;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(30px);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    border-radius:28px;
+
+    padding:35px;
+
+    transition:.35s;
+
+}
+
+.tool-card:hover{
+
+    transform:translateY(-10px) scale(1.03);
+
+    background:rgba(255,255,255,.12);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.35);
+
+}
+
+.tool-icon{
+
+    width:80px;
+
+    height:80px;
+
+    border-radius:22px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+    background:rgba(255,255,255,.10);
+
+    font-size:34px;
+
+}
+
+.tool-card h3{
+
+    font-size:28px;
+
+    margin-bottom:12px;
+
+}
+
+.tool-card p{
+
+    color:#d1d5db;
+
+    line-height:28px;
+
+}
+
+.tool-card span{
+
+    display:inline-block;
+
+    margin-top:22px;
+
+    font-weight:600;
 
 }
