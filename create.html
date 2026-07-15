@@ -6,44 +6,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create PDF | Prince PDF Tools</title>
+<title>Create PDF | PDF Tools</title>
+
+<link rel="icon" href="logo.png">
 
 <link rel="stylesheet" href="create.css">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 </head>
 
 <body>
 
-<header class="header">
+<!-- Back Button -->
 
 <a href="index.html" class="back-btn">
 
 <i class="fa-solid fa-arrow-left"></i>
 
-Back
-
 </a>
+
+<!-- Main -->
+
+<div class="container">
+
+<img src="logo.png" class="page-logo">
 
 <h1>Create PDF</h1>
 
-<p>Convert Images into High Quality PDF</p>
+<p class="subtitle">
 
-</header>
+Convert Images into High Quality PDF
 
-<section class="upload-section">
+</p>
 
-<div class="upload-box" id="dropArea">
+<!-- Upload Card -->
 
-<i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+<div class="glass-card">
 
-<h2>Drag & Drop Images Here</h2>
+<label for="imageInput" class="upload-box">
 
-<p>OR</p>
+<i class="fa-solid fa-images"></i>
+
+<h2>Select Images</h2>
+
+<p>
+
+PNG, JPG & JPEG Supported
+
+</p>
+
+</label>
 
 <input
 type="file"
@@ -52,71 +68,66 @@ accept="image/*"
 multiple
 hidden>
 
-<button id="chooseBtn">
+<div id="imagePreview">
 
-<i class="fa-solid fa-image"></i>
+</div>
 
-Choose Images
+<button id="createBtn">
+
+<i class="fa-solid fa-file-pdf"></i>
+
+Create PDF
 
 </button>
 
 </div>
+<!-- ==========================
+        PDF SETTINGS
+========================== -->
 
-</section>
-
-<section class="settings">
+<div class="settings-card">
 
 <h2>
-
 <i class="fa-solid fa-sliders"></i>
-
 PDF Settings
-
 </h2>
 
-<div class="setting-grid">
-
-<div class="setting-card">
+<div class="setting-group">
 
 <label>Page Size</label>
 
 <select id="pageSize">
 
 <option value="a4">A4</option>
-
 <option value="letter">Letter</option>
-
-<option value="original">Original</option>
+<option value="legal">Legal</option>
 
 </select>
 
 </div>
 
-<div class="setting-card">
+<div class="setting-group">
 
 <label>Orientation</label>
 
 <select id="orientation">
 
 <option value="portrait">Portrait</option>
-
 <option value="landscape">Landscape</option>
 
 </select>
 
 </div>
 
-<div class="setting-card">
+<div class="setting-group">
 
 <label>Image Quality</label>
 
 <select id="quality">
 
-<option value="1">High</option>
-
-<option value="0.8">Medium</option>
-
-<option value="0.6">Low</option>
+<option value="1">High Quality</option>
+<option value="0.8">Medium Quality</option>
+<option value="0.6">Low Quality</option>
 
 </select>
 
@@ -124,121 +135,28 @@ PDF Settings
 
 </div>
 
-</section>
+<!-- ==========================
+      IMAGE PREVIEW
+========================== -->
 
-<!-- PART 2 CONTINUES FROM HERE -->
-  <section class="preview-section">
+<div class="preview-card">
 
-    <div class="section-title">
+<h2>
 
-        <h2>
-            <i class="fa-solid fa-images"></i>
-            Selected Images
-        </h2>
+<i class="fa-solid fa-images"></i>
 
-        <span id="imageCount">0 Images</span>
+Selected Images
 
-    </div>
+</h2>
 
-    <div id="previewContainer" class="preview-grid">
+<div id="previewContainer">
 
-        <!-- Images Preview Here -->
+<p class="empty-text">
 
-    </div>
+No images selected yet.
 
-</section>
-
-<section class="action-section">
-
-    <div class="pdf-options">
-
-        <label>
-
-            <input type="checkbox" id="fitPage" checked>
-
-            Fit Image to Page
-
-        </label>
-
-        <label>
-
-            <input type="checkbox" id="margin">
-
-            Add Margin
-
-        </label>
-
-    </div>
-
-    <div class="action-buttons">
-
-        <button id="clearBtn" class="danger-btn">
-
-            <i class="fa-solid fa-trash"></i>
-
-            Clear All
-
-        </button>
-
-        <button id="convertBtn" class="primary-btn">
-
-            <i class="fa-solid fa-file-pdf"></i>
-
-            Convert to PDF
-
-        </button>
-
-    </div>
-
-</section>
-
-<div id="loadingModal">
-
-    <div class="loading-box">
-
-        <div class="spinner"></div>
-
-        <h3>Creating PDF...</h3>
-
-        <p>Please wait a moment.</p>
-
-    </div>
+</p>
 
 </div>
 
-<!-- PART 3 STARTS FROM HERE -->
-  <footer class="footer">
-
-    <div class="footer-content">
-
-        <h3>Prince PDF Tools</h3>
-
-        <p>
-            Fast • Secure • Free PDF Converter
-        </p>
-
-        <div class="footer-icons">
-
-            <i class="fa-solid fa-file-pdf"></i>
-
-            <i class="fa-solid fa-image"></i>
-
-            <i class="fa-solid fa-download"></i>
-
-        </div>
-
-        <p class="copyright">
-
-            © 2026 Prince PDF Tools<br>
-            Website Made By Prince
-
-        </p>
-
-    </div>
-
-</footer>
-
-<script src="create.js"></script>
-
-</body>
-</html>
+</div>
