@@ -1,91 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prince PDF Tools</title>
 
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<title>PDF Tools</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
 </head>
 
 <body>
 
-<!-- Loading Screen -->
+<!--=========================
+      PREMIUM LOADER
+==========================-->
 
-<div id="loading">
+<div id="loader">
 
-    <div class="loader"></div>
+<div class="loader-card">
 
-    <h1>Website Made By Prince</h1>
+<img src="logo.png" class="loader-logo" alt="PDF Tools">
 
-    <p>Loading...</p>
+<h1>PDF Tools</h1>
 
-</div>
+<p id="loadingText">
 
-<!-- Main Website -->
+Preparing Workspace...
 
-<div id="main">
+</p>
 
-    <div class="card">
+<div class="progress">
 
-        <h1>📄 Prince PDF Tools</h1>
-
-        <p class="subtitle">
-            Create, Edit and Manage your PDF files in seconds.
-        </p>
-
-        <div class="buttons">
-
-            <button class="btn create"
-                onclick="window.location.href='create.html'">
-
-                <i class="fa-solid fa-file-circle-plus"></i>
-
-                Create a PDF
-
-            </button>
-
-            <button class="btn edit"
-                onclick="window.location.href='edit.html'">
-
-                <i class="fa-solid fa-pen-to-square"></i>
-
-                Edit a PDF
-
-            </button>
-
-        </div>
-
-        <footer>
-
-            Made with ❤️ by Prince
-
-        </footer>
-
-    </div>
+<div id="progressBar"></div>
 
 </div>
 
-<script>
+<div class="percent">
 
-window.onload = function(){
+<span id="percent">0%</span>
 
-    setTimeout(function(){
+</div>
 
-        document.getElementById("loading").style.display="none";
+<div class="status">
 
-        document.getElementById("main").style.display="flex";
+<p id="status">
 
-        document.body.style.overflow="auto";
+⚡ Initializing Engine...
 
-    },3000);
+</p>
 
-};
+</div>
 
-</script>
+<div class="loading-list">
+
+<p id="step1">⏳ Initializing Engine</p>
+
+<p id="step2">⏳ Loading Modules</p>
+
+<p id="step3">⏳ Preparing Tools</p>
+
+</div>
+
+<div class="made-by">
+
+Website Made By Prince ❤️
+
+</div>
+
+</div>
+
+</div>
+
+<!--=========================
+      MAIN WEBSITE
+==========================-->
+
+<div id="mainContent">
+
+<header class="top-header">
+
+<img src="logo.png" class="main-logo" alt="PDF Tools Logo">
+
+<h1>PDF Tools</h1>
+
+<p>
+
+All PDF Solutions In One Place
+
+</p>
+
+</header>
+<!--=========================
+        MAIN CONTENT
+==========================-->
+
+<main class="home">
+
+<div class="glass-container">
+
+<h2>Choose Your Tool</h2>
+
+<p class="subtitle">
+Fast • Secure • Simple
+</p>
+
+<div class="tool-grid">
+
+<!-- Create PDF -->
+
+<a href="create.html" class="tool-card">
+
+<div class="tool-icon">
+
+<i class="fa-solid fa-file-circle-plus"></i>
+
+</div>
+
+<h3>Create PDF</h3>
+
+<p>
+
+Convert Images into High Quality PDF Files.
+
+</p>
+
+<span>
+
+Open Tool
+
+<i class="fa-solid fa-arrow-right"></i>
+
+</span>
+
+</a>
+
+<!-- Edit PDF -->
+
+<a href="edit.html" class="tool-card">
+
+<div class="tool-icon">
+
+<i class="fa-solid fa-pen-to-square"></i>
+
+</div>
+
+<h3>Edit PDF</h3>
+
+<p>
+
+Merge, Split, Rotate & Compress PDF.
+
+</p>
+
+<span>
+
+Open Tool
+
+<i class="fa-solid fa-arrow-right"></i>
+
+</span>
+
+</a>
+
+</div>
+
+</div>
+
+</main>
+<!--=========================
+          FOOTER
+==========================-->
+
+<footer class="footer">
+
+<div class="footer-logo">
+
+<img src="logo.png" alt="PDF Tools Logo">
+
+</div>
+
+<h3>PDF Tools</h3>
+
+<p>
+All PDF Solutions In One Place
+</p>
+
+<div class="footer-links">
+
+<a href="create.html">
+<i class="fa-solid fa-file-circle-plus"></i>
+Create PDF
+</a>
+
+<a href="edit.html">
+<i class="fa-solid fa-pen-to-square"></i>
+Edit PDF
+</a>
+
+</div>
+
+<p class="copyright">
+
+© 2026 PDF Tools
+
+<br>
+
+Website Made By Prince ❤️
+
+</p>
+
+</footer>
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
