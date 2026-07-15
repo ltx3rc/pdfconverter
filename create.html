@@ -14,22 +14,17 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 </head>
 
 <body>
-
-<!-- Back Button -->
 
 <a href="index.html" class="back-btn">
 
 <i class="fa-solid fa-arrow-left"></i>
 
 </a>
-
-<!-- Main -->
 
 <div class="container">
 
@@ -43,34 +38,29 @@ Convert Images into High Quality PDF
 
 </p>
 
-<!-- Upload Card -->
-
 <div class="glass-card">
 
-<label for="imageInput" class="upload-box">
+<label class="upload-box" for="imageInput">
 
 <i class="fa-solid fa-images"></i>
 
 <h2>Select Images</h2>
 
-<p>
-
-PNG, JPG & JPEG Supported
-
-</p>
+<p>PNG, JPG & JPEG Supported</p>
 
 </label>
 
 <input
+
 type="file"
+
 id="imageInput"
-accept="image/*"
+
+accept="image/png,image/jpeg,image/jpg"
+
 multiple
+
 hidden>
-
-<div id="imagePreview">
-
-</div>
 
 <button id="createBtn">
 
@@ -81,17 +71,16 @@ Create PDF
 </button>
 
 </div>
-<!-- ==========================
-        PDF SETTINGS
-========================== -->
 
 <div class="settings-card">
 
 <h2>
-<i class="fa-solid fa-sliders"></i>
-PDF Settings
-</h2>
 
+<i class="fa-solid fa-sliders"></i>
+
+PDF Settings
+
+</h2>
 <div class="setting-group">
 
 <label>Page Size</label>
@@ -135,9 +124,7 @@ PDF Settings
 
 </div>
 
-<!-- ==========================
-      IMAGE PREVIEW
-========================== -->
+<!-- Selected Images -->
 
 <div class="preview-card">
 
@@ -149,7 +136,7 @@ Selected Images
 
 </h2>
 
-<div id="previewContainer">
+<div id="previewContainer" class="preview-grid">
 
 <p class="empty-text">
 
@@ -160,3 +147,46 @@ No images selected yet.
 </div>
 
 </div>
+<!-- Loading Modal -->
+
+<div id="loadingModal" class="loading-modal">
+
+    <div class="loading-card">
+
+        <img src="logo.png" class="loading-logo">
+
+        <h2>Creating PDF...</h2>
+
+        <div class="loading-bar">
+
+            <div id="loadingProgress"></div>
+
+        </div>
+
+        <p>Please wait while your PDF is being generated...</p>
+
+    </div>
+
+</div>
+
+<footer class="footer">
+
+    <img src="logo.png" class="footer-logo">
+
+    <h3>PDF Tools</h3>
+
+    <p>Fast • Secure • Free</p>
+
+    <p>Website Made By Prince ❤️</p>
+
+</footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="create.js"></script>
+
+</body>
+
+</html>
